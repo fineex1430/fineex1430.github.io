@@ -1,0 +1,145 @@
+<?php 
+	require_once('../admin/lib/functions.php');
+	$db						=	new login_function();
+	$mobile_no_error		=	"";
+	$aadhar_card_no_error	=	"";
+	$message				=	"";
+	$flag					=	0;
+	if(isset($_SESSION['current_login_restaurant']))
+	{
+		$current_login_admin	=	$_SESSION['current_login_restaurant'];
+	}
+	if(!isset($_SESSION['current_login_restaurant']))
+	{	
+		header("location:index.php");
+	}
+	
+	if(isset($_POST['submit_record']))
+	{
+		$full_name			=	$_POST['full_name'];
+		$address			=	$_POST['address'];
+		$mobile_number		=	$_POST['mobile_number'];
+		$password			=	$_POST['password'];
+		if(strlen($mobile_number)!=10)
+		{
+			$mobile_no_error	=	"Please Enter 10 Digit mobile_number";
+			$flag					=	1;
+		}
+		if($flag==0)
+		{
+			if($db->save_customer($full_name,$address,$mobile_number,$password))
+			{
+				$message	=	1;
+			}
+			else
+			{
+				$message	=	2;
+			}
+		}
+	}//end
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Add Customer</title>
+    <!-- GLOBAL MAINLY STYLES-->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/line-awesome.min.css" rel="stylesheet" />
+    <link href="css/themify-icons.css" rel="stylesheet" />
+    <link href="css/animate.min.css" rel="stylesheet" />
+    <link href="css/toastr.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-select.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  
+    <!-- PLUGINS STYLES-->
+    <!-- THEME STYLES-->
+    <link href="css/main.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  
+    <!-- PAGE LEVEL STYLES-->
+</head>
+<style>
+.col-md-8
+{
+	width:100%;
+	margin:auto;
+	margin-top:20px;
+}
+
+@media only screen and (max-width: 600px) {
+	.col-md-8
+	{
+		margin:30px;
+		width:100%;
+	}
+	.alert
+	{
+		width:100%;
+	}
+	.side-row
+	{
+		width:49%;
+		display:inline-table;
+	}
+	.form-control form-control-air
+	{
+		margin-top:10px;
+	}
+}
+
+</style>
+<body class="fixed-navbar" style="">
+
+
+    <div class="page-wrapper">
+        <!-- START HEADER-->
+        <?php include('header.php'); ?>
+        <!-- END HEADER-->
+        <!-- START SIDEBAR-->
+		<?php include('side-bar.php'); ?>
+        <!-- END SIDEBAR-->
+        <img src="images/back2.gif" style="height:100%;" />
+		
+		<!-- END PAGE CONTENT-->
+        <?php include('footer.php'); ?>
+    </div>
+    <!-- START SEARCH PANEL-->
+    <?php include('search.php'); ?>
+    <!-- END SEARCH PANEL-->
+    <!-- BEGIN THEME CONFIG PANEL-->
+    
+    <!-- END THEME CONFIG PANEL-->
+    <!-- BEGIN PAGA BACKDROPS-->
+    <div class="sidenav-backdrop backdrop"></div>
+    <div class="preloader-backdrop">
+        <div class="page-preloader">Loading</div>
+    </div>
+    <!-- END PAGA BACKDROPS-->
+    <!-- New question dialog-->
+    
+    <!-- End New question dialog-->
+    <!-- QUICK SIDEBAR-->
+    <?php include('right-side-bar.php'); ?>
+    <!-- END QUICK SIDEBAR-->
+    <!-- CORE PLUGINS-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/metisMenu.min.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="js/idle-timer.min.js"></script>
+    <script src="js/toastr.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <!-- PAGE LEVEL PLUGINS-->
+    <!-- CORE SCRIPTS-->
+    <script src="js/app.min.js"></script>
+    <!-- PAGE LEVEL SCRIPTS-->
+</body>
+
+</html>

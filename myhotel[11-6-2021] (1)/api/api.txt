@@ -1,0 +1,76 @@
+1. Title:Creating User account/User registration
+Link:http://localhost/api/user_registration.php
+Method:POST
+Keys:
+full_name,mobile_number,password
+Response:
+{"status":1,"message":"Please enter 10 digit Mobile Number"}
+{"status":1,"message":"This user is already exist"}
+{"status":0,"message":"User account created successflly"}
+
+2. Title:Creating User Log-in
+Link:http://localhost/api/user_login.php
+Method:POST
+Keys:
+mobile_number,password
+Response:
+{"status":1,"message":"Incorrect Password"}
+{"status":1,"message":"This User Is Not Exist"}
+{"status":0,"message":"Log-In Successful"}
+
+3. Title:User Profile
+Link:http://localhost/api/my_profile.php
+Method:POST
+Keys:
+mobile_number
+Response:
+{"status":1,"message":"The Profile Of This Mobile Number Does Not Exist"}
+{"status":0,"message":[10,"vaibhavi","7498641784","password","2021-05-27","17:29:30 31"]}
+
+4. Title:Forget Password
+Link:http://localhost/api/forget_password.php
+Method:POST
+Keys:
+mobile_number
+Response:
+{"status":1,"message":"Please enter 10 digit Mobile Number"}
+{"status":1,"message":"This User Is Not Exist"}
+{"status":0,"message":"Your Password Is password"}
+
+5. Title:Change Password
+Link:http://localhost/api/change_user_password.php
+Method:POST
+Keys:
+mobile_number,current_password,new_password,confirm_password
+Response:
+{"status":1,"message":"Incorrect Password"}
+{"status":1,"message":"New password not matched with confirm password"}
+{"status":0,"message":"\tPassword Changed Successfully to new"}
+
+5. Title:Restaurant List
+Link:http://localhost/api/restaurant_list.php
+Method:POST
+Keys:
+restaurant_name
+Response:
+{"status":0,"message":[{"id":10,"restaurant name":"BALAJI SAROVAR","address":"ASRA CHOWK, HOTGI ROAD,
+SOLAPUR","image":"kzJ3Tiik2Y.jpg","contact no1":"9587458563","contact no2":"","owner name":"REDDY","user
+name":"balaji","password":"balaji","date":"2021-05-16","time":"19:49:15"}]}
+{"status":0,"message":[{"id":14,"restaurant name":"vaibhavi","address":"aaaa","image":"a","contact
+no1":"1122334455","contact no2":"5544332211","owner name":"vaibhavi","user
+name":"vaibhavi","password":"password","date":"2021-05-28","time":"10:10:10"}]}
+
+5. Title:Menu Items From Restaurant Id
+Link:http://localhost/api/menu_items_from_restaurant_id.php
+Method:POST
+Keys:
+restaurant_id
+Response:
+{"status":1,"message":"Please Enter Correct Restaurant ID"}
+{"status":0,"message":[{"id":15,"restaurant_id":"nisarg","menu_item_name":"Samosa","item_description":"Chilli
+Samosa","price":50,"discount":10,"image":"pAAgpT34unk5uY1.jpg","date":"2021-05-16","time":"19:15:39
+31"},{"id":16,"restaurant_id":"nisarg","menu_item_name":"Khava Poli","item_description":"Sweet Khava
+Poli","price":70,"discount":10,"image":"1Mad5aUw01G10bt.jpg","date":"2021-05-16","time":"19:18:48
+31"},{"id":18,"restaurant_id":"nisarg","menu_item_name":"KajuDum Biryani","item_description":"Now Enjoy Your Favorite
+Biryani With Special Kaju
+Flavor","price":450,"discount":10,"image":"yIwbgds9Yt42DmB.jpg","date":"2021-05-21","time":"20:10:00 31"}]}

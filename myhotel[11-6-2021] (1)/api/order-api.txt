@@ -1,0 +1,36 @@
+1. Title:Add Cart Item
+Link:http://localhost/api/add_cart_item.php
+Method:POST
+Keys:
+user_mobile_number,restaurant_id,menu_item_id,quantity
+Response:
+{"status":0,"message":"Added To The Cart"}
+{"status":1,"message":"You Are Trying To Place Menu Item of Another Restaurant, Previous All Menus Will Be Discarded..
+Do You Want To Proceed?"}
+
+2. Title:Cart Item List
+Link:http://localhost/api/cart_item_list.php
+Method:POST
+Keys:
+user_mobile_number
+Response:
+{"status":0,"message":[{"cart_id":15,"mobile_number":"9822099113","restaurant_id":"22","restaurant_name":"","restauranrt_addr":"","menu_item_id":"22","menu_item_name":"","price":0,"discount":0,"quantity":"2","total_amount":"0","total_discount":"0","final_amount":"0","date":"2021-06-10","time":"16:34:27
+30"}]}
+{"status":1,"message":"No any cart items availble"}
+
+3. Title:Order History
+Link:http://localhost/api/order-history.php
+Method:POST
+Keys:
+mobile_number
+Response:
+{"status":0,"message":[{"id":30,"mobile_number":"1122334400","order_id":"1","date":"2021-06-07","time":"11:47:21
+30","order_status":"active","restaurant_id":""}]}
+
+4. Title:Delete All Cart Items
+Link:http://localhost/api/delete-all-cart-items.php
+Method:POST
+Keys:
+user_mobile_number
+Response:
+{"status":0,"message":"All Cart Items Deleted Successfully"}
